@@ -25,7 +25,7 @@ const MovieCard = ({ movie, onBookmark, isBookmarked = false }) => {
 
   const imageUrl = TMDBService.getPosterUrl(poster_path);
   const releaseYear = TMDBService.getYearFromDate(release_date);
-  const rating = TMDBService.getRating(vote_average);
+  const rating = TMDBService.formatRating(vote_average);
 
   const languageMap = TMDBService.getLanguages();
 
@@ -94,7 +94,7 @@ const MovieCard = ({ movie, onBookmark, isBookmarked = false }) => {
         {parseFloat(rating) > 0 && (
           <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
             <div className="rating">
-              <star className="w-4 h-4 text-yellow-400 fill-current" />
+              <Star className="w-4 h-4 text-yellow-400 fill-current" />
               <p className="text-sm">{rating}</p>
             </div>
           </div>

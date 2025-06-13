@@ -1,12 +1,10 @@
 const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-console.log(TMDB_API_KEY)
 const TMDB_BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
-
 class TMDBService{
     static async makeRequest(endpoint, params = {}) {
         const url = new URL(`${TMDB_BASE_URL}${endpoint}`);
-        url.searchParams.append('api_key', TMDB_API_KEY);
+        //url.searchParams.append('api_key', TMDB_API_KEY);
 
         Object.entries(params).forEach(([key, value]) => {
             if (value !== undefined && value !== null && value !== '') {
@@ -15,7 +13,13 @@ class TMDBService{
         });
 
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${TMDB_API_KEY}`,
+                    'COntent-Type': 'application/json;charset=utf-8',
+                }
+            });
             if (!response.ok) {
                 throw new Error('TMDB API Error: ${response.status}${response.statusText}');
             }
