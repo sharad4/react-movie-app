@@ -1,6 +1,13 @@
 import React from "react";
 import { Loader2, Film, Play, Star, Zap } from "lucide-react";
 
+const sizeClasses = {
+  small: "w-4 h-4",
+  medium: "w-8 h-8",
+  large: "w-12 h-12",
+  xlarge: "w-16 h-16",
+};
+
 const Spinner = ({
   size = "medium",
   variant = "default",
@@ -8,13 +15,6 @@ const Spinner = ({
   fullScreen = false,
   overlay = false,
 }) => {
-  const sizeClasses = {
-    small: "w-4 h-4",
-    medium: "w-8 h-8",
-    large: "w-12 h-12",
-    xlarge: "w-16 h-16",
-  };
-
   const textSizes = {
     small: "text-xs",
     medium: "text-sm",

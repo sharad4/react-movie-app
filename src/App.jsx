@@ -3,7 +3,8 @@ import TMDBService from "./utils/tmdb";
 import { Film, TrendingUp, Star, Calendar, Bookmark } from "lucide-react";
 import MovieCard from "./components/MovieCard";
 import Spinner from "./components/Spinner";
-import Search from "./components/Search";
+import { MovieGridSkeleton } from "./components/Spinner";
+import SearchTDB from "./components/Search";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -211,7 +212,7 @@ const App = () => {
         </header>
 
         {/* Search Component */}
-        <Search
+        <SearchTDB
           onSearch={handleSearch}
           placeholder="Search for movies, TV shows, people..."
           showTrending={true}
